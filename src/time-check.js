@@ -4,7 +4,7 @@ import { getLinkedArticles } from "./pages/linkedin.js";
 import { getNetflixArticles } from "./pages/netflix.js";
 import { getGoogleArticles } from "./pages/google.js";
 import { getSpotifyArticles } from "./pages/spotify.js";
-import { client } from "./index.js";
+import { client } from "../index.js";
 import { EmbedBuilder } from "discord.js";
 
 const fetchArticles = (getFunction) => (channel) => async (color) => {

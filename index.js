@@ -1,8 +1,8 @@
 import { Client, EmbedBuilder, IntentsBitField } from "discord.js";
 import dotenv from "dotenv";
-import { checkTime } from "./time-check.js";
-import { getLinkedArticles } from "./pages/linkedin.js";
-import { getMetaArticles } from "./pages/meta-eng.js";
+import { checkTime } from "./src/time-check.js";
+import { getLinkedArticles } from "./src/pages/linkedin.js";
+import { getMetaArticles } from "./src/pages/meta-eng.js";
 
 dotenv.config();
 
