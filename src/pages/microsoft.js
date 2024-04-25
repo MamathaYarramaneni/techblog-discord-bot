@@ -13,6 +13,7 @@ export const getMSArticles = () => {
     ".entry-title a",
     ".lp-default-image",
     ".entry-post-date",
-    "data-src"
+    "data-src",
+    "https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31"
   );
 };

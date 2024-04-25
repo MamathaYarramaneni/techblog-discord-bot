@@ -1,10 +1,12 @@
 import { Client, EmbedBuilder, IntentsBitField } from "discord.js";
 import dotenv from "dotenv";
-import { getMSArticles } from "./pages/microsoft.js";
+import { checkTime } from "./time-check.js";
+import { getLinkedArticles } from "./pages/linkedin.js";
 import { getMetaArticles } from "./pages/meta-eng.js";
+
 dotenv.config();
 
-const client = new Client({
+export const client = new Client({
   intents: [
     IntentsBitField.Flags.Guilds,
     IntentsBitField.Flags.GuildMembers,
@@ -15,6 +17,12 @@ const client = new Client({
 
 client.login(process.env.DISCORD_TOKEN.toString());
 
+client.on("ready", () => {
+  console.log(`Logged in as ${client.user.tag}!`);
+
+  setInterval(checkTime, 60000);
+});
+
 client.on("messageCreate", async (msg) => {
   if (msg.content === "hi") {
     const customEmbeds = [];
@@ -24,7 +32,7 @@ client.on("messageCreate", async (msg) => {
           new EmbedBuilder()
             .setTitle(`New updates from ${val.title} blog!`)
             .setDescription(`${em.desc}`)
-            .setColor("Red")
+            .setColor("DarkGreen")
             .setImage(`${em.imageUrl}`)
             .setURL(`${em.url}`)
         );

@@ -8,7 +8,8 @@ export const scrapeInfo = async (
   urlElement,
   imgElement,
   dateElement,
-  imageAttrElement
+  imageAttrElement,
+  defaultImgUrl
 ) => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
@@ -24,7 +25,8 @@ export const scrapeInfo = async (
       urlSelector,
       imgSelector,
       dateSelector,
-      imgAttrSelector
+      imgAttrSelector,
+      defaultImgUrl
     ) => {
       const articles = Array.from(
         document.querySelectorAll(allElementsSelector)
@@ -32,10 +34,10 @@ export const scrapeInfo = async (
 
       const allArticles = articles?.map((article) => {
         const desc = article.querySelector(descSelector)?.textContent.trim();
-        const url = article.querySelector(urlSelector).getAttribute("href");
-        const imageUrl = article
-          .querySelector(imgSelector)
-          ?.getAttribute(imgAttrSelector);
+        const url = article.querySelector(urlSelector)?.getAttribute("href");
+        const imageUrl =
+          article.querySelector(imgSelector)?.getAttribute(imgAttrSelector) ||
+          defaultImgUrl;
         const postedOn = article
           .querySelector(dateSelector)
           ?.textContent.trim();
@@ -61,7 +63,8 @@ export const scrapeInfo = async (
     urlElement,
     imgElement,
     dateElement,
-    imageAttrElement
+    imageAttrElement,
+    defaultImgUrl
   );
 
   return { title: pageTitle, articlesData };

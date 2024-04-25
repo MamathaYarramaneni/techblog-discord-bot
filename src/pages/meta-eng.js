@@ -4,7 +4,7 @@ export const url = "https://engineering.fb.com";
 
 const title = "Engineering at Meta";
 
-export const getMetaArticles = (articles) => {
+export const getMetaArticles = () => {
   return scrapeInfo(
     title,
     url,
@@ -13,6 +13,7 @@ export const getMetaArticles = (articles) => {
     ".entry-title a",
     ".feat-image img",
     ".posted-on time",
-    "src"
+    "src",
+    "https://engineering.fb.com/wp-content/themes/code-fb-com/img/logo-meta.svg"
   );
 };
