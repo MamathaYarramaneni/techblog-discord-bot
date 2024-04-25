@@ -6,7 +6,7 @@ import { getMetaArticles } from "./src/pages/meta-eng.js";
 
 dotenv.config();
 
-export const client = new Client({
+const client = new Client({
   intents: [
     IntentsBitField.Flags.Guilds,
     IntentsBitField.Flags.GuildMembers,
@@ -46,3 +46,4 @@ client.on("messageCreate", async (msg) => {
     }
   }
 });
+export default client;
